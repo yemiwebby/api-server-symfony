@@ -22,8 +22,6 @@ Ensure that you have Symfony CLI installed on your System. Follow the instructio
 
 ### Set up the project
 
-TODO: Provide the reader detailed information on how to set up the project such as installing project dependencies and anything required for the reader to run the project successfully. However, **do not provide steps on running the project here, that goes in a different section in this document**. For example, in a Node.js project one may state the following:
-
 Install the project dependencies:
 
 ```bash

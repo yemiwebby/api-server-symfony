@@ -1,34 +1,31 @@
-# Hello World API: <FRAMEWORK-NAME> + <PROGRAMMING-LANGUAGE-NAME> Sample
+# Hello World API: Symfony + PHP Sample
 
-You can use this sample project to learn how to secure a simple <FRAMEWORK-NAME> API server using Auth0.
-
-<DIAGRAM-OF-SYSTEM-ARCHITECTURE>
+You can use this sample project to learn how to secure a simple Symfony API server using Auth0.
 
 The `starter` branch offers a working API server that exposes three public endpoints. Each endpoint returns a different type of message: public, protected, and admin.
 
 The goal is to use Auth0 to only allow requests that contain a valid access token in their authorization header to access the protected and admin data. Additionally, only access tokens that contain a `read:admin-messages` permission should access the admin data, which is referred to as [Role-Based Access Control (RBAC)](https://auth0.com/docs/authorization/rbac/).
 
-[Check out the `add-authorization` branch]() to see authorization in action using Auth0.
+[Check out the `add-authorization` branch](https://github.com/yemiwebby/api-server-symfony/tree/add-authorization) to see authorization in action using Auth0.
 
-[Check out the `add-rbac` branch]() to see authorization and Role-Based Access Control (RBAC) in action using Auth0.
+[Check out the `add-rbac` branch](https://github.com/yemiwebby/api-server-symfony/tree/add-rbac) to see authorization and Role-Based Access Control (RBAC) in action using Auth0.
+
+### Prerequisite
+
+Ensure that you have Symfony CLI installed on your System. Follow the instruction [here](https://symfony.com/download) to download it.
 
 ## Get Started
-
-TODO: Provide the reader detailed information on how to set up the project such as installing project dependencies and anything required for the reader to run the project successfully. For example, in a Node.js project one may state the following:
-
 Install the project dependencies:
 
 ```bash
-npm install
+composer install
 ```
 
-Run the project in dev mode:
+Next, create a new file named `.env.local` and replace its content with the details in `.env` file. You can issue this command for that:
 
 ```bash
-npm run dev
+cp .env .env.local
 ```
-
-Be precise and concise with this instructions. Link out to any relevant documentation if you need to provide more details on setting up.
 
 ## API Endpoints
 
@@ -121,12 +118,3 @@ Status: 500 Internal Server Error
   "message": "Message that describes the error that took place."
 }
 ```
-
-cp .env .env.local
-
-
-Uncomment 
-DATABASE_URL="sqlite:///%kernel.project_dir%/var/data.db"
-
-Comment DATABASE_URL
-# DATABASE_URL="mysql://db_user:db_password@127.0.0.1:3306/db_name?serverVersion=5.7"

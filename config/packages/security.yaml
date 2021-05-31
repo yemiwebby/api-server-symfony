@@ -1,24 +1,25 @@
 security:
+    enable_authenticator_manager: true
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        users_in_memory: { memory: null }
+        #        users_in_memory: { memory: null }
+        web_service_user_provider:
+            id: App\Security\User\WebServiceUserProvider
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        main:
-            anonymous: true
-            lazy: true
-            provider: users_in_memory
-
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#firewalls-authentication
-
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
-
+        secured_area:
+            pattern: ^/api
+            stateless: true
+            guard:
+                authenticators:
+                    id: App\Security\User\GuardAuthenticator
+            provider: web_service_user_provider
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/api/messages/public, roles: PUBLIC_ACCESS }
+        - { path: ^/api/messages/protected, roles: ROLE_OAUTH_AUTHENTICATED }
+        - { path: ^/api/messages/admin, roles: ROLE_OAUTH_AUTHENTICATED }
